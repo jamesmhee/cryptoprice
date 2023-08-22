@@ -8,11 +8,13 @@ import Asset from './pages/Asset.jsx'
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/asset/:id' element={<Asset />} />
-      </Routes>
+      <div className='scroll-smooth'>
+        <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/asset/:id' element={<Asset />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   )
 }

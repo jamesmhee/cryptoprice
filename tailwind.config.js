@@ -10,12 +10,16 @@ export default {
         dark: {
           elem: '#222831',
           bg: '#222831',
-          text: '#FFFFFF'
+          text: '#FFFFFF',
+          red: '#30475E',
+          navy: '#30475E'
         },
         light: {
           elem: '#FFFFFF',
           bg: '#FAFAFA',
-          text: '#111517'
+          text: '#111517',
+          red: '#F05454',
+          navy: '#30475E'
         }
       }
     },

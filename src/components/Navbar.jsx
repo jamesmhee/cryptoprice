@@ -8,7 +8,7 @@ const Navbar = () => {
   const isDark = theme === 'dark'
 
   return (
-    <div className='sticky top-0 border-b-2 dark:border-b-[1px] bg-light-bg dark:bg-dark-bg h-screen max-h-12 flex justify-around items-center p-7'>
+    <div className='z-[999] sticky top-0 border-b-2 dark:border-b-[1px] bg-light-bg dark:bg-dark-bg h-screen max-h-12 max-w-screen w-auto flex justify-between md:justify-around items-center p-7'>
       <Link to='/'>
         <h1 className='text-2xl inline-flex dark:text-light-bg font-semibold'><MdCurrencyBitcoin className='my-auto inline-flex text-3xl'/>CRYPTOPRICE</h1>
       </Link>
