@@ -19,7 +19,7 @@ const Asset = () => {
   }, []);
 
   return (
-    <div className="bg-light-bg max-h-screen h-screen dark:bg-dark-bg mx-auto">
+    <div className="bg-light-bg max-h-screen h-screen dark:text-light-bg dark:bg-dark-bg mx-auto">
       <div className="py-5 container list-none max-w-full text-center w-96 mx-auto">
         <ul className="p-5 border-2 rounded-lg shadow-md">
           <li className="text-lg"># {coin.rank}</li>
