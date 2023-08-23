@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { MdCurrencyExchange, MdNumbers } from "react-icons/md";
+import { MdNumbers } from "react-icons/md";
 import { getAssets } from "../functions/Getdata";
+import { Link } from "react-router-dom"
 
 const Table = () => {
   const [assets, setAssets] = useState([]);
@@ -32,8 +32,8 @@ const Table = () => {
         <tbody className="text-dark-elem dark:text-light-elem">
           {assets.map((asset, index) => (
             <tr key={asset.id}>
-              <td>{index+1}</td>
-              <td>{asset.name}</td>
+              <td><Link to={`/asset/`+asset.id}>{index+1}</Link></td>
+              <td><Link to={`/asset/`+asset.id}>{asset.name}</Link></td>
               <td>{parseFloat(asset.priceUsd).toFixed(2)}</td>
               <td>{parseFloat(asset.marketCapUsd).toFixed(2)}</td>
               <td>{parseFloat(asset.volumeUsd24Hr).toFixed(2)}</td>

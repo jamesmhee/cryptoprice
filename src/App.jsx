@@ -6,6 +6,10 @@ import Home from './pages/Home.jsx'
 import Asset from './pages/Asset.jsx'
 
 function App() {
+  const fetchAssets = async () =>{
+    
+  }
+
   return (
     <BrowserRouter>
       <div className='scroll-smooth'>

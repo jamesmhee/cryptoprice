@@ -9,3 +9,7 @@ export const getAssets = async () =>{
 export const getRates = async () =>{
     return await axios.get(urlApi + '/rates')
 }
+
+export const getAsset = async (id) =>{
+    return await axios.get(urlApi + '/assets/' + id)
+}
