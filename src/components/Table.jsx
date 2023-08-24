@@ -57,7 +57,7 @@ const Table = () => {
                     <Link to={`/asset/` + asset.id}>
                       {asset?.name}
                       <br></br>
-                      <label className="text-sm md:hidden">
+                      <label className="cursor-pointer text-sm md:hidden">
                         <MdAnalytics className="inline-block fill-yellow-500 dark:fill-light-red" />{" "}
                         :{" "}
                         {parseFloat(asset?.marketCapUsd).toLocaleString(
