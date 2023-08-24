@@ -54,15 +54,20 @@ const Table = () => {
                 <tr className="hover:bg-zinc-100 dark:hover:bg-slate-600 h-20 border-b dark:border-b">
                   <td className="pl-5 text-sm">{index + 1}</td>
                   <td>
-                    <Link to={`/asset/` + asset.id}>{asset?.name}</Link>
-                    <br></br>
-                    <label className="text-sm md:hidden">
-                      <MdAnalytics className="inline-block fill-yellow-500 dark:fill-light-red" />{" "}
-                      :{" "}
-                      {parseFloat(asset?.marketCapUsd).toLocaleString("en-US", {
-                        maximumFractionDigits: 0,
-                      })}
-                    </label>
+                    <Link to={`/asset/` + asset.id}>
+                      {asset?.name}
+                      <br></br>
+                      <label className="text-sm md:hidden">
+                        <MdAnalytics className="inline-block fill-yellow-500 dark:fill-light-red" />{" "}
+                        :{" "}
+                        {parseFloat(asset?.marketCapUsd).toLocaleString(
+                          "en-US",
+                          {
+                            maximumFractionDigits: 0,
+                          }
+                        )}
+                      </label>
+                    </Link>
                   </td>
                   <td className="text-center">
                     {parseFloat(asset?.priceUsd).toLocaleString("en-US", {
