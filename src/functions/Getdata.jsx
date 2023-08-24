@@ -3,13 +3,16 @@ import axios from "axios"
 const urlApi = 'https://api.coincap.io/v2'
 
 export const getAssets = async () =>{
-    return await axios.get(urlApi + '/assets')
+    const result = await axios.get(urlApi + '/assets')
+    return result.data
 }
 
 export const getRates = async () =>{
-    return await axios.get(urlApi + '/rates')
+    const result = await axios.get(urlApi + '/rates')
+    return result.data
 }
 
 export const getAsset = async (id) =>{
-    return await axios.get(urlApi + '/assets/' + id)
+    const result = await axios.get(urlApi + '/assets/' + id)
+    return result.data
 }

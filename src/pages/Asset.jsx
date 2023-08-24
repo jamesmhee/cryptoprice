@@ -7,8 +7,8 @@ const Asset = () => {
   const [coin, setCoin] = useState([]);
   const fetchAsset = async () => {
     try {
-      await getAsset(id).then((res) => setCoin(res.data.data));
-      console.log(coin);
+      const response = await getAsset(id);
+      setCoin(response?.data);
     } catch (error) {
       console.log("error", error);
     }
@@ -19,7 +19,7 @@ const Asset = () => {
   }, []);
 
   return (
-    <div className="bg-light-bg max-h-screen h-screen dark:text-light-bg dark:bg-dark-bg mx-auto">
+    <div className="antialiased bg-light-bg max-h-screen h-screen dark:text-light-bg dark:bg-dark-bg mx-auto">
       <div className="py-5 container list-none text-center mx-auto">
         <ul className="p-5 border-2 dark:border w-full rounded-lg">
           <li className="text-lg"># {coin.rank}</li>

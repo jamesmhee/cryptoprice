@@ -1,76 +1,105 @@
 import React, { useEffect, useState } from "react";
-import { MdNumbers } from "react-icons/md";
 import { getAssets } from "../functions/Getdata";
 import { Link } from "react-router-dom";
+import { MdAnalytics } from "react-icons/md";
 
 const Table = () => {
   const [assets, setAssets] = useState([]);
   const [loading, setLoading] = useState(false);
-  const fetch = async () => {
+
+  const fetchAsset = async () => {
     try {
-      getAssets().then((res) => setAssets(res?.data?.data));
+      const response = await getAssets();
+      setAssets(response?.data);
     } catch (error) {
       console.log("error", error);
     }
   };
   useEffect(() => {
-    fetch()
-    .then(()=>setLoading(true))
+    const fetchData = async () => {
+      await fetchAsset();
+      setLoading(true);
+    };
+    fetchData();
   }, [assets]);
 
   return (
-    <div className="mx-auto my-2 overflow-x-scroll scroll-hidden md:overflow-hidden ">
+    <div className="mx-auto my-2 overflow-x-auto md:overflow-hidden ">
       <table className="w-full max-w-full table-auto border-collapse bg-light-bg dark:bg-dark-navy border dark:border-none">
         <thead className="text-lg text-dark-elem dark:text-light-elem">
-          <tr className="text-left h-14 md:text-auto">
+          <tr className="antialiased text-left h-16 md:text-auto">
             <th className="pl-5 border-b-2">#</th>
-            <th className="border-b-2">Name</th>
+            <th className="border-b-2">
+              Name <br></br>
+              <span className="font-medium text-sm inline-block md:hidden">
+                Market Cap
+              </span>
+            </th>
             <th className="text-center border-b-2">Price</th>
-            <th className="text-right md:text-right border-b-2">Market Cap</th>
+            <th className="text-right md:text-right border-b-2 hidden md:table-cell">
+              Market Cap
+            </th>
             <th className="pr-5 text-right md:text-right border-b-2">
               Volume (24H)
             </th>
           </tr>
         </thead>
         {loading ? (
-          <tbody className="text-dark-elem dark:text-light-elem">
+          <>
             {assets.map((asset, index) => (
-              <>
-                <tr
-                  className="hover:bg-zinc-100 dark:hover:bg-slate-600 h-20 border-b dark:border-b"
-                  key={asset.id}
-                >
+              <tbody
+                key={asset.id}
+                className="antialiased text-dark-elem dark:text-light-elem font-medium"
+              >
+                <tr className="hover:bg-zinc-100 dark:hover:bg-slate-600 h-20 border-b dark:border-b">
                   <td className="pl-5 text-sm">{index + 1}</td>
                   <td>
                     <Link to={`/asset/` + asset.id}>{asset?.name}</Link>
+                    <br></br>
+                    <label className="text-sm md:hidden">
+                      <MdAnalytics className="inline-block fill-yellow-500 dark:fill-light-red" />{" "}
+                      :{" "}
+                      {parseFloat(asset?.marketCapUsd).toLocaleString("en-US", {
+                        maximumFractionDigits: 0,
+                      })}
+                    </label>
                   </td>
                   <td className="text-center">
-                    {parseFloat(asset?.priceUsd).toFixed(2)}
+                    {parseFloat(asset?.priceUsd).toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
-                  <td className="text-right">
-                    {parseFloat(asset?.marketCapUsd).toFixed(0)}
+                  <td className="text-right hidden md:table-cell">
+                    {parseFloat(asset?.marketCapUsd).toLocaleString("en-US", {
+                      maximumFractionDigits: 0,
+                    })}
                   </td>
-                  <td className="pr-5 text-right">{parseFloat(asset?.volumeUsd24Hr).toFixed(0)}</td>
+                  <td className="pr-5 text-right">
+                    {parseFloat(asset?.volumeUsd24Hr).toLocaleString("en-US", {
+                      maximumFractionDigits: 0,
+                    })}
+                  </td>
                 </tr>
-              </>
+              </tbody>
             ))}
-          </tbody>
+          </>
         ) : (
           <tbody className="text-dark-elem dark:text-light-elem">
             <tr className="hover:bg-zinc-100 dark:hover:bg-slate-600 h-20 ">
-              <td className="pl-5 animate-pulse h-20 w-auto">
+              <td className="pl-5 animate-pulse h-20 w-24">
                 <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
               </td>
-              <td className="animate-pulse h-20">
+              <td className="animate-pulse h-20 w-auto">
                 <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
               </td>
-              <td className="animate-pulse h-20">
+              <td className="animate-pulse h-20 md:w-64">
                 <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
               </td>
-              <td className="animate-pulse h-20">
+              <td className="animate-pulse h-20 hidden md:w-64 md:table-cell">
                 <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
               </td>
-              <td className="pr-5 animate-pulse h-20">
+              <td className="pr-5 animate-pulse h-20 md:w-64">
                 <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
               </td>
             </tr>

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { MdCurrencyExchange, MdSearch } from "react-icons/md";
 import { getRates } from "../functions/Getdata";
-import Search from "./Search";
 
 const Switch = () => {
   const [currency, setCurrency] = useState([]);
   const [onPress, setOnPress] = useState(false);
   const fetchRate = async () => {
     try {
-      await getRates().then((res) => setCurrency(res.data.data));
+      const response = await getRates()
+      setCurrency(response?.data)
     } catch (error) {
       console.log("error", error);
     }
@@ -20,7 +20,7 @@ const Switch = () => {
     });
   };
   useEffect(() => {
-    fetchRate();
+    fetchRate()
   }, []);
 
   return (
