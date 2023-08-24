@@ -5,12 +5,14 @@ import Search from "../components/Search";
 const Home = () => {
   return (
     <div className="flex justify-center bg-light-bg dark:bg-dark-bg h-auto max-h-full">
-      <div className="relative md:overflow-hidden shrink-0 bg-light-red dark:bg-dark-bg border-[1.7px] rounded-xl shadow-xl md:my-5 mx-1 my-2 px-2 md:px-1 w-auto max-w-full">
-        <div className="flex justify-between">
-          <Search />
-          <Switch />
+      <div className="md:overflow-hidden shrink dark:bg-dark-bg md:my-5 mx-1 my-2 w-full max-w-full">
+        <div className="container relative bg-zinc-200 dark:bg-dark-bg mx-auto border rounded-xl p-2">
+          <div className="flex justify-between mb-3">
+            <Search />
+            <Switch />
+          </div>
+          <Table />
         </div>
-        <Table />
       </div>
     </div>
   );
