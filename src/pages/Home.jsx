@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "../components/Table";
-import Switch from "../components/Switch";
+
 const Home = () => {
   return (
     <div className="flex justify-center bg-light-bg dark:bg-dark-bg min-h-screen h-auto max-h-full">
