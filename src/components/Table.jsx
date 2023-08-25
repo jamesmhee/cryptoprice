@@ -14,7 +14,6 @@ const Table = () => {
     try {
       const response = await getAssets();
       setAssets(response?.data);
-      setLoading(true);
     } catch (error) {
       console.log("error", error);
     }
