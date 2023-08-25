@@ -28,7 +28,7 @@ const Switch = () => {
       <button
           id="buttonCurrency"
           onClick={handleButton}
-          className="border-[1.5px] rounded-lg mt-2 bg-light-bg dark:bg-dark-navy text-light-red cursor-pointer font-semibold dark:text-light-bg dark:hover:text-slate-900 hover:text-white hover:bg-light-red focus:font-semibold py-1 px-2"
+          className="text-xs md:text-base border-[1.5px] rounded-lg mt-2 bg-light-bg dark:bg-dark-navy text-light-red cursor-pointer font-semibold dark:text-light-bg dark:hover:text-slate-900 hover:text-white hover:bg-light-red focus:font-semibold py-1 px-2"
         >
           <MdCurrencyExchange className="inline-flex mr-2" />
           Switch Currency
