@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { getAssets } from "../functions/Getdata";
 import { Link } from "react-router-dom";
 import { MdAnalytics, MdSearch } from "react-icons/md";
+import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import Switch from "./Switch";
-
+import Skelton from "./Skelton"
 const Table = () => {
   const [assets, setAssets] = useState([]);
   const [filteredText, setFilteredText] = useState([]);
@@ -17,12 +18,12 @@ const Table = () => {
     } catch (error) {
       console.log("error", error);
     }
-    setLoading(true)
+    setLoading(true);
   };
 
   useEffect(() => {
-    fetchAsset();
-  }, []);
+    fetchAsset();    
+  }, [assets]);
 
   const filterAsset = (searchText) => {
     if (searchText.trim().length > 0) {
@@ -108,7 +109,7 @@ const Table = () => {
                         {parseFloat(asset?.priceUsd).toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
-                        })}
+                        })} <span className={`${asset?.changePercent24Hr > 0 ? "text-green-600" : "text-light-red"} text-light-red text-xs font-semibold`}> {asset?.changePercent24Hr > 0 ? <AiFillCaretUp className="inline-flex"/> :<AiFillCaretDown className="inline-flex"/>}{parseFloat(asset?.changePercent24Hr).toFixed(2)}% (24h)</span>
                       </td>
                       <td className="text-right hidden md:table-cell">
                         {parseFloat(asset?.marketCapUsd).toLocaleString(
@@ -132,25 +133,7 @@ const Table = () => {
               )}
             </>
           ) : (
-            <tbody className="text-dark-elem dark:text-light-elem">
-              <tr className="hover:bg-zinc-100 dark:hover:bg-slate-600 h-20 ">
-                <td className="pl-5 animate-pulse h-20 w-24">
-                  <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
-                </td>
-                <td className="animate-pulse h-20 w-auto">
-                  <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
-                </td>
-                <td className="animate-pulse h-20 md:w-64">
-                  <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
-                </td>
-                <td className="animate-pulse h-20 hidden md:w-64 md:table-cell">
-                  <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
-                </td>
-                <td className="pr-5 animate-pulse h-20 md:w-64">
-                  <div className="h-2 bg-zinc-300 dark:bg-slate-800 rounded"></div>
-                </td>
-              </tr>
-            </tbody>
+            <Skelton/>
           )}
         </table>
       </div>
