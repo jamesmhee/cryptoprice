@@ -109,7 +109,7 @@ const Table = () => {
                         {parseFloat(asset?.priceUsd).toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
-                        })} <span className={`${asset?.changePercent24Hr > 0 ? "text-green-600" : "text-light-red"} text-light-red text-xs font-semibold`}> {asset?.changePercent24Hr > 0 ? <AiFillCaretUp className="inline-flex"/> :<AiFillCaretDown className="inline-flex"/>}{parseFloat(asset?.changePercent24Hr).toFixed(2)}% (24h)</span>
+                        })} <span className={`${asset?.changePercent24Hr > 0 ? "text-green-700" : "text-light-red"} text-xs font-semibold`}> {asset?.changePercent24Hr > 0 ? <AiFillCaretUp className="inline-flex"/> :<AiFillCaretDown className="inline-flex"/>}{parseFloat(asset?.changePercent24Hr).toFixed(2)}% (24h)</span>
                       </td>
                       <td className="text-right hidden md:table-cell">
                         {parseFloat(asset?.marketCapUsd).toLocaleString(
