@@ -5,6 +5,7 @@ import { MdAnalytics, MdSearch } from "react-icons/md";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import Switch from "./Switch";
 import Skelton from "./Skelton"
+
 const Table = () => {
   const [assets, setAssets] = useState([]);
   const [filteredText, setFilteredText] = useState([]);
