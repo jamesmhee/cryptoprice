@@ -26,7 +26,7 @@ const Asset = () => {
           <h1 className="text-xl inline-flex p-3 rounded-[100%] text-light-red font-semibold border-2 bg-light-elem dark:bg-dark-elem dark:border"># {coin?.rank} </h1>
           <span className="text-xl uppercase mx-2">{coin?.id}</span>
           <span className="text-sm text-zinc-500 uppercase mx2">{coin?.symbol}</span>
-          <h2 className="mt-8 text-2xl md:text-[3.7rem] font-bold">{parseFloat(coin?.priceUsd).toLocaleString("en-US",{maximumFractionDigits: 0, style:"currency", currency:"USD"})} 
+          <h2 className="mt-8 text-2xl md:text-[3.7rem] font-bold">{parseFloat(coin?.priceUsd).toLocaleString("en-US",{maximumFractionDigits: 2, style:"currency", currency:"USD"})} 
           <span className={`${coin?.changePercent24Hr > 0 ? "text-green-600" : "text-light-red"} mx-1 text-sm md:text-[1.5rem] font-semibold`}> {coin?.changePercent24Hr > 0 ? <AiFillCaretUp className="inline-flex"/> :<AiFillCaretDown className="inline-flex"/>}{parseFloat(coin?.changePercent24Hr).toFixed(2)}% (24h)</span></h2>          
           <hr className="my-2"></hr>
           <p className="mt-1 text-sm md:text-base"><span className="mr-1">Market Cap : </span>{parseFloat(coin?.marketCapUsd).toLocaleString("en-US", {maximumFractionDigits:0, style:"currency", currency:"USD"})}</p>
